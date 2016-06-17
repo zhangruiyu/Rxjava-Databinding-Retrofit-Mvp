@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="touming">#00000000</color><!--白色 -->
+    <color name="white">#ffffff</color><!--白色 -->
+    <color name="red">#ff0000</color><!--红色 -->
+
+   <!-- <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>-->
+     <color name="colorPrimary">#e73c47</color>
+    <color name="colorPrimaryDark">#e73b47</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="color_999999">#999999</color>
+    <color name="color_eeeeee">#eeeeee</color><!--浅灰色 -->
+    <color name="color_01b7c2">#01b7c2</color>
+    <color name="color_b6b6b6">#b6b6b6</color>
+    <color name="color_d2d1d6">#d2d1d6</color>
+    <!-- 浅蓝色 -->
+    <color name="cambridgeblue">#02b4fe</color>
+    <color name="color_c7c7c7">#c7c7c7</color>
+    <color name="color_00b9c2">#00b9c2</color>
+    <color name="color_676767">#676767</color>
+    <color name="color_666666">#666666</color>
+    <color name="color_333333">#333333</color>
+    <color name="color_e73b47">#e73b47</color>
+    <color name="color_a9a9a9">#a9a9a9</color>
+
+    <color name="cambridgegray">#A9A9A9</color>
+
+    <color name="transparent">#50000000</color>
+    <color name="bg_page">#ffebebeb</color>
+    <color name="color_37ba27">#37BA27</color>
+    <color name="color_21CE65">#21CE65</color>
+    <color name="color_ff3300">#ff3300</color>
+    <color name="color_e73c47">#e73c47</color>
+
+    <color name="color_00bac0">#00bac0</color>
+    <color name="color_38bb26">#38bb26</color>
+    <color name="color_858293">#858293</color>
+    <color name="color_00b8c3">#00b8c3</color>
+    <color name="color_37ba271">#37ba27</color>
+
+
+    <color name="reveal_color">#4C000000</color>
+    <color name="white_40">#66ffffff</color>
+    <color name="gray_999">#999</color>
+    <color name="ca0611">#ca0611</color>
+    <color name="e81f2c">#e81f2c</color>
+    <color name="e84f57">#e84f57</color>
+    <color name="e99497">#e99497</color>
+    <color name="e848689">#848689</color>
+    <color name="f15353">#f15353</color>
+    <color name="color_00b8c4">#00b8c4</color>
+    <color name="color_aaaaaa">#aaaaaa</color>
+    <color name="color_faf0d2">#faf0d2</color>
+    <color name="color_e42733">#e42733</color>
+</resources>

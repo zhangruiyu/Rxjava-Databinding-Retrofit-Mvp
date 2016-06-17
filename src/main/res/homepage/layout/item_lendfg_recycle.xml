@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="application.hexindai.com.rxhexindai.manager.BidManage" />
+
+        <import type="application.hexindai.com.rxhexindai.modular.homepage.SumNotFillInfo" />
+
+        <variable
+            name="onebidinfo"
+            type="SumNotFillInfo.DataBean.ListBean" />
+
+        <variable
+            name="homepageaction"
+            type="application.hexindai.com.rxhexindai.modular.homepage.HomePageActionHander" />
+
+    </data>
+
+    <RelativeLayout xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/lendfg_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/lendfg_item_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/new_bg_chujie" />
+
+        <ImageView
+            android:id="@+id/iv_xinshouzhuanxiang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/xinshou_label_index"
+            android:visibility="@{onebidinfo.is_novice == 1 ? View.VISIBLE :View.GONE}" />
+
+        <RelativeLayout
+            android:id="@+id/lendfg_item_rl_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@+id/iv_xinshouzhuanxiang">
+
+            <TextView
+                android:id="@+id/lendfg_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@{onebidinfo.bid_name}"
+                android:textColor="@color/color_333333"
+                android:textSize="16dp" />
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/lendfg_item_cardview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/lendfg_item_title"
+                android:visibility="@{onebidinfo.bid_type == BidManage.HEBAO ? View.VISIBLE : View.GONE}"
+                card_view:cardBackgroundColor="#ffba00"
+                card_view:cardCornerRadius="3dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="荷包"
+                    android:textColor="@color/white"
+                    android:textSize="12dp" />
+            </android.support.v7.widget.CardView>
+        </RelativeLayout>
+        <!--因为有荷包样式 所以如果在上面那个相对布局上面 那么上面的相对布局宽度不是title的宽度而是荷包的宽度-->
+        <TextView
+            android:id="@+id/lendfg_item_titlezhanwei"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@+id/iv_xinshouzhuanxiang"
+            android:singleLine="true"
+            android:textColor="@color/color_333333"
+            android:textSize="16dp"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:id="@+id/lendfg_item_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lendfg_item_titlezhanwei"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/lendfg_item_nianhualilv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:includeFontPadding="false"
+                    android:index="@{2}"
+                    android:large="@{31}"
+                    android:small="@{14}"
+                    android:strtext="@{String.valueOf(onebidinfo.bid_rate)+&quot;%&quot;}"
+                    android:textColor="@color/color_e73c47"
+                    android:textSize="31dp"
+                    android:visibility="invisible"
+                    app:text="12" />
+
+                <TextView
+                    android:id="@+id/lendfg_item_nianhualilv_tiexi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/textView"
+                    android:layout_alignStart="@+id/textView"
+                    android:includeFontPadding="false"
+                    android:index="@{2}"
+                    android:large="@{31}"
+                    android:small="@{14}"
+                    android:strtext="@{String.valueOf(onebidinfo.bid_rate)+&quot;%&quot;}"
+                    android:textColor="@color/color_e73c47"
+                    android:textSize="31dp"
+                    app:text="12" />
+
+                <application.hexindai.com.rxhexindai.ui.TiexiView
+                    android:id="@+id/lendfg_item_tiexiView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_toRightOf="@+id/lendfg_item_nianhualilv_tiexi" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lendfg_item_nianhualilv"
+                    android:layout_centerHorizontal="true"
+                    android:text="预期年化收益率"
+                    android:textColor="@color/color_999999"
+                    android:textSize="13dp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="77dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/lendfg_item_qixian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:includeFontPadding="false"
+                    android:index="@{onebidinfo.bid_duration.length() == 1 ? 1 :2}"
+                    android:large="@{31}"
+                    android:small="@{14}"
+                    android:strtext="@{String.valueOf(onebidinfo.bid_duration)+&quot;个月&quot;}"
+                    android:textColor="@color/color_333333"
+                    android:textSize="31dp"
+                    app:text="22" />
+
+                <TextView
+                    android:id="@+id/lendfg_item_qixianname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="借款期限"
+                    android:textColor="@color/color_999999"
+                    android:textSize="13dp" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/kaibiaoshijian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="20dp"
+                    android:paddingTop="20dp"
+                    android:text="今天 10:00"
+                    android:textColor="#00bbc3"
+                    android:textSize="12dp" />
+
+                <ImageView
+                    android:id="@+id/homepage_progressbar_fengexian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toLeftOf="@+id/homepage_progressbar"
+                    android:src="@mipmap/xuline_chujie" />
+
+                <application.hexindai.com.rxhexindai.ui.HomepageProgressbar
+                    android:id="@+id/homepage_progressbar"
+                    android:layout_width="53dp"
+                    android:layout_height="53dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp" />
+
+                <TextView
+                    android:id="@+id/lendfg_item_jindu"
+                    android:layout_width="53dp"
+                    android:layout_height="53dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:text="80"
+                    android:textColor="@color/color_00b8c3" />
+
+                <ImageView
+                    android:id="@+id/lendfg_item_fullbidImage"
+                    android:layout_width="65dp"
+                    android:layout_height="64dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@mipmap/huankuan_cion_chujie" />
+
+                <ImageView
+                    android:id="@+id/lendfg_item_daojishiimage"
+                    android:layout_width="11dp"
+                    android:layout_height="19dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp"
+                    android:src="@mipmap/loading_chujie" />
+
+                <TextView
+                    android:id="@+id/lendfg_item_daojishi"
+                    android:layout_width="60dp"
+                    android:layout_height="24dp"
+                    android:layout_below="@+id/lendfg_item_daojishiimage"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/yuanjiao_button"
+                    android:gravity="center"
+                    android:text="300秒"
+                    android:textColor="@color/white"
+                    android:textSize="14dp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/loaninfo_expand_details_promptlyLend"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_below="@+id/lendfg_item_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/yuanjiao_button"
+            android:onClick="@{()-> homepageaction.joinLendClick(onebidinfo)}"
+            android:text="新手出借"
+            android:textColor="#ffffff"
+            android:textSize="18dp" />
+    </RelativeLayout>
+</layout>

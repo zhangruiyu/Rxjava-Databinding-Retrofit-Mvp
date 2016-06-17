@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="homepagemodel"
+            type="application.hexindai.com.rxhexindai.modular.homepage.HomepageViewModel" />
+
+        <variable
+            name="presenter"
+            type="application.hexindai.com.rxhexindai.modular.homepage.HomepageContract.Presenter" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabl_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#e73b47"
+            app:tabGravity="fill"
+            app:tabMode="scrollable">
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="推荐" />
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="全部" />
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="荷包" />
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="抵押标" />
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="信用标" />
+        </android.support.design.widget.TabLayout>
+
+        <application.hexindai.com.rxhexindai.ui.ScrollChildSwipeRefreshLayout
+            android:id="@+id/swl_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tabl_title"
+            android:onRefresh="@{presenter}"
+            android:refreshing="@{homepagemodel.isfresh}">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycle_showbid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="@{homepagemodel.mHaveData}" />
+
+                <android.support.v4.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="@{homepagemodel.mNoData}">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/lendfragment_error_smallpeople"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@mipmap/smallpeople" />
+
+                        <TextView
+                            android:id="@+id/error_hint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/lendfragment_error_smallpeople"
+                            android:layout_centerHorizontal="true"
+                            android:text="数据获取失败"
+                            android:textColor="@color/color_999999"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:id="@+id/lendfragment_error_getDataAgain"
+                            android:layout_width="104dp"
+                            android:layout_height="37dp"
+                            android:layout_below="@+id/error_hint"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="30dp"
+                            android:background="@drawable/chujie_error"
+                            android:gravity="center"
+                            android:onClick="@{()-> presenter.loadAllBid()}"
+                            android:text="重新获取"
+                            android:textColor="@color/color_e73c47"
+                            android:textSize="14dp" />
+                    </RelativeLayout>
+                </android.support.v4.widget.NestedScrollView>
+
+                <android.support.design.widget.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|bottom" />
+            </FrameLayout>
+        </application.hexindai.com.rxhexindai.ui.ScrollChildSwipeRefreshLayout>
+    </RelativeLayout>
+
+
+</layout>
