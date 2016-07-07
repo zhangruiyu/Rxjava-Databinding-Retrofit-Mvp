@@ -89,7 +89,6 @@ public class HomepageFragment extends RxFragment implements HomepageContract.Vie
     @Override
     public void openJoinLendUi(@NonNull SumNotFillInfo.DataBean.ListBean requestedTask) {
         Toast.makeText(getActivity(), requestedTask.bid_name, Toast.LENGTH_LONG).show();
-        ProxyFactory.getIsLoginInvocationhandlerImpl().doSometing();
     }
 
 
